@@ -14,12 +14,10 @@ public class ProductConvert {
     dto.setImage(product.getImage());
     dto.setName(product.getName());
     dto.setDescription(product.getDescription());
-    dto.getCategory().setCode(product.getCategory().getId());
-    dto.getCategory().setName(product.getCategory().getName());
+    dto.setCategoryCode(product.getCategory().getId());
     dto.setCurrency(product.getCurrency());
     dto.setPrice(product.getPrice());
     dto.setRating(product.getRating());
-    dto.setCreatedDate(product.getCreatedDate());
     dto.setUpdatedDate(product.getUpdatedDate());
     return dto;
   }
@@ -34,12 +32,10 @@ public class ProductConvert {
     product.setImage(dto.getImage());
     product.setName(dto.getName());
     product.setDescription(dto.getDescription());
-    product.getCategory().setId(dto.getCategory().getCode());
-    product.getCategory().setName(dto.getCategory().getName());
+    product.getCategory().setId(dto.getCategoryCode());
     product.setCurrency(dto.getCurrency());
     product.setPrice(dto.getPrice());
     product.setRating(dto.getRating());
-    product.setCreatedDate(dto.getCreatedDate());
     product.setUpdatedDate(dto.getUpdatedDate());
     return product;
   }

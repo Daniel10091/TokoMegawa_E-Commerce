@@ -13,7 +13,6 @@ public class CategoryDto {
   
   private Long code;
   private String name;
-  private ProductDto product;
   private LocalDateTime createdDate;
 
 }

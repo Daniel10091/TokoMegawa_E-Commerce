@@ -15,11 +15,10 @@ public class ProductDto {
   private byte[] image;
   private String name;
   private String description;
-  private CategoryDto category;
+  private Long categoryCode;
   private String currency;
   private Double price;
   private Integer rating;
-  private LocalDateTime createdDate;
   private LocalDateTime updatedDate;
 
 }

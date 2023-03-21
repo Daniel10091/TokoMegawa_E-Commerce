@@ -11,6 +11,7 @@ import com.tokomegawa.tokomegawa.model.Product;
 public interface ProductMapper {
   
   @Mapping(source = "product.id", target = "code")
+  @Mapping(source = "product.category.id", target = "categoryCode")
   ProductDto toDto(Product product);
 
   @InheritInverseConfiguration

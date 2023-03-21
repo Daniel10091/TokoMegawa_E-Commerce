@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -25,8 +27,12 @@ import lombok.Setter;
 public class Product {
   
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private Long id;
+  
+  @Column(name = "category_id")
+  private Long categoryId;
   
   @Column(name = "image")
   private byte[] image;
@@ -36,10 +42,6 @@ public class Product {
   
   @Column(name = "description", nullable = false)
   private String description;
-  
-  @OneToOne
-  @JoinColumn(name = "category")
-  private Category category;
   
   @Column(name = "currency", nullable = false)
   private String currency;
@@ -57,5 +59,9 @@ public class Product {
   @Column(name = "updated_date")
   @CreationTimestamp
   private LocalDateTime updatedDate;
+  
+  @OneToOne
+  @JoinColumn(name = "category_id", insertable = false, updatable = false)
+  private Category category;
 
 }

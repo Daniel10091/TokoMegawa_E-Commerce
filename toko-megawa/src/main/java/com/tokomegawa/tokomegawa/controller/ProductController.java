@@ -31,16 +31,17 @@ public class ProductController {
   
   @GetMapping("/getProducts")
   public ResponseEntity<List<ProductDto>> listAllProducts() {
-    List<Product> product = productService.listAllProducts();
-    return ResponseEntity.ok(ProductConvert.convertProductDtoList(product));
+    List<Product> products = productService.listAllProducts();
+    return ResponseEntity.ok(ProductConvert.convertProductDtoList(products));
   }
 
   @GetMapping("/find/{id}")
-  public ResponseEntity<?> findProductById(@PathVariable("id") Long id) {
+  public ResponseEntity<?> findProductByCode(@PathVariable("id") Long id) {
     try {
       Product product = productService.findProductById(id);
       return ResponseEntity.ok(productMapper.toDto(product));
     } catch (Exception e) {
+      System.out.println(" -> Erro: " + e.getMessage());
       return new ResponseEntity<String>("O produto não foi encontrado.", HttpStatus.NOT_FOUND);
     }
   }
